@@ -1,0 +1,15 @@
+# Recommended CLAUDE.md Addition
+
+Add these lines to your project's `CLAUDE.md` to activate the epistemic memory protocol:
+
+```markdown
+## Epistemic Memory
+
+User profile beliefs are stored in the memory directory with per-belief confidence metadata.
+Follow the protocol in `memory/user/epistemic-protocol.md` when updating beliefs:
+- Only update beliefs actively relevant to the current session
+- Confidence must be earned through evidence, not assigned by how insightful a belief sounds
+- When observed behavior contradicts a belief, log a tension — don't silently resolve it
+- Increment session counter at conversation start
+- At periodic review thresholds, run `/mirror audit` or `/mirror gut-check`
+```
