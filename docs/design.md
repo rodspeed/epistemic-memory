@@ -78,6 +78,8 @@ When the user says "I'm a morning person" but every session starts at 11pm, both
 
 The system doesn't wait for the user to narrate themselves. If someone consistently asks for concise output across 20 sessions without ever saying "I prefer brevity," that pattern confirms a belief about communication preferences. Behavioral evidence accumulates without requiring metacognitive statements from the user.
 
+**Enforcement:** The Observe skill runs automatically at conversation end (alongside `/harvest`) and watches for behavioral evidence — judgment calls, pushback, process signals, and contradictions with the existing profile. Each observation is logged with a date, evidence description, and strength rating (single/confirming/complicating/contradicting). Observations accumulate as raw evidence; synthesis into the portrait happens during `/mirror` or periodic review. This prevents silent consistency from depending on the LLM "remembering" to notice patterns — the same enforcement gap the session counter solved for periodic reviews.
+
 ### 8. Session Counter
 
 Every 10 sessions, the system triggers a periodic review: present the 3 highest and 3 lowest confidence beliefs for the user to validate, challenge, or ignore. This is the load-bearing enforcement mechanism — without it, the review process is aspirational rather than real. The counter turns "we should periodically check" into "we check on session 10, 20, 30."

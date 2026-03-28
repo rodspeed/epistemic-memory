@@ -48,7 +48,7 @@ Confidence and permanence are independent. You can be certain about something th
 4. **Dormancy decay** — confidence attenuates when the system goes unused
 5. **Tensions log** — contradictions stay on record instead of being resolved away
 6. **Self-report vs. behavior rule** — when stated and observed diverge, hold both
-7. **Silent consistency** — behavioral patterns count as evidence without explicit narration
+7. **Silent consistency** — behavioral patterns count as evidence without explicit narration (enforced by the Observe skill)
 8. **Session counter** — mechanical trigger for periodic reviews (every 10 sessions)
 9. **Maintenance cost bound** — only update beliefs relevant to the current session
 10. **Evolving epistemology** — the framework itself improves over time
@@ -73,6 +73,17 @@ Four modes for inspecting and refining the model:
 | `/mirror audit` | Epistemological dashboard — confidence distributions, decay, drift |
 | `/mirror gut-check` | Quick validation of highest and lowest confidence beliefs |
 | `/mirror interview` | Structured conversation that probes blind spots and tests stale beliefs |
+
+## The Observe Skill
+
+Silent consistency (component 7) needs enforcement — the system can't rely on the LLM remembering to notice behavioral patterns. The Observe skill solves this by running automatically at conversation end alongside `/harvest`. It watches for:
+
+- **Judgment calls** where reasonable people would disagree
+- **Pushback** on suggestions, revealing priorities or values
+- **Behavioral contradictions** with the existing profile
+- **Process signals** — what the user lingers on, skips, or returns to
+
+Each observation is logged as dated evidence with a strength rating (single, confirming, complicating, contradicting). Observations accumulate as raw evidence; they get synthesized into the portrait during `/mirror` or periodic review. The separation is intentional — observations are cheap and frequent, portrait updates are expensive and should require pattern confirmation across multiple sessions.
 
 ## Why Not Just Use MEMORY.md?
 
